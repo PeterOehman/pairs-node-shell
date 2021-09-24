@@ -1,10 +1,20 @@
-process.stdout.write('prompt >');
+const pwd = require('./pwd')
+const ls = require('./ls')
 
-process.stdin.on('data', data => {
+process.stdout.write('prompt >');
+module.exports = process.stdin.on('data', data => {
   const cmd = data.toString().trim();
 
   if (cmd === 'pwd') {
-    process.stdout.write('\n' + process.cwd());
+    pwd()
+  }
+  else if (cmd === 'ls') {
+    ls()
   }
   process.stdout.write('\nprompt > ');
 });
+
+
+
+
+
